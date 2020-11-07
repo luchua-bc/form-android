@@ -51,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
         if (intent.hasExtra("YYYY") &&
                 intent.hasExtra("MM") &&
                 intent.hasExtra("DD")) {
-            int year = Integer.parseInt(intent.getStringExtra("YYYY"));
-            int month = Integer.parseInt(intent.getStringExtra("MM")) - 1;
-            int day = Integer.parseInt(intent.getStringExtra("DD"));
-            datePicker.init(year,month,day,null);
+                int year = intent.getIntExtra("YYYY", 0);
+                int month = intent.getIntExtra("MM", 0) - 1;
+                int day = intent.getIntExtra("DD", 0);
+
+                datePicker.init(year,month,day,null);
         } else {
             final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
